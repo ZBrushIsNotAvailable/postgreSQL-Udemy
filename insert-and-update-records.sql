@@ -39,3 +39,26 @@ set first_name = 'Smith'
 where customer_id = 3
 returning *;
 
+
+
+/* UPSERT -- combination of insert or update (on conflict)
+syntax:
+
+    insert into table_name (column_list)
+    values(value_list)
+    on conflict target action
+   */
+
+create table  t_tags(
+    id serial PRIMARY KEY ,
+    tag text UNIQUE ,
+    update_date timestamp DEFAULT now()
+);
+
+insert into t_tags (tag)
+values ('Pen')
+on conflict (tag)
+do update
+    set
+        tag = excluded.tag,
+        update_date = now()
