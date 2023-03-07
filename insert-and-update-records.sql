@@ -40,7 +40,6 @@ where customer_id = 3
 returning *;
 
 
-
 /* UPSERT -- combination of insert or update (on conflict)
 syntax:
 
@@ -49,16 +48,16 @@ syntax:
     on conflict target action
    */
 
-create table  t_tags(
-    id serial PRIMARY KEY ,
-    tag text UNIQUE ,
+create table t_tags
+(
+    id          serial PRIMARY KEY,
+    tag         text UNIQUE,
     update_date timestamp DEFAULT now()
 );
 
 insert into t_tags (tag)
 values ('Pen')
 on conflict (tag)
-do update
-    set
-        tag = excluded.tag,
+    do update
+    set tag         = excluded.tag,
         update_date = now()
