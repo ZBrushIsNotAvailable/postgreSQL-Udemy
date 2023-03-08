@@ -12,6 +12,10 @@
    ASC is default order direction
 
    ORDER BY can be run with multiple sort columns (or expr)
+
+   v.49
+   WHERE can only be used after FROM
+   ORDER BY is always after WHERE
 */
 
 select movie_id     "id",
