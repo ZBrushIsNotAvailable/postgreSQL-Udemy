@@ -6,5 +6,5 @@
    you can also select distinct combinations of columns (SELECT DISTINCT col_name_1, col_name_2 FROM table_name)
 */
 
-select  distinct movie_lang,  director_id
+select distinct movie_lang, director_id
 from movies
